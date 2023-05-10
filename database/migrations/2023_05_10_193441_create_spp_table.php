@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('spp', function (Blueprint $table) {
             $table->id();
+            $table->integer('year');
+            $table->integer('amount');
             $table->timestamps();
         });
     }
