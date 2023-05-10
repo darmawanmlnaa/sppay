@@ -19,7 +19,7 @@
             <a href="#" class="nav-link has-dropdown"><i class="far fa-user"></i> <span>Pengguna</span></a>
             <ul class="dropdown-menu">
                 <li><a class="nav-link" href="forms-advanced-form.html">Admin</a></li>
-                <li><a class="nav-link" href="forms-editor.html">Petugas</a></li>
+                <li><a class="nav-link" href="{{ route('teacher') }}">Petugas</a></li>
                 <li><a class="nav-link" href="forms-validation.html">Murid</a></li>
             </ul>
         </li>
