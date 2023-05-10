@@ -1,4 +1,55 @@
-<section>
+<div class="card">
+    <div class="card-header">
+        <h4>Ubah Password</h4>
+    </div>
+    <div class="card-body">
+        <form action="{{ route('password.update') }}" method="post" class="needs-validation">
+            @csrf
+            @method('put')
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <label>Kata sandi sekarang</label>
+                    <input id="current_password" name="current_password" type="password" class="form-control" autocomplete="current-password" required>
+                    <div class="invalid-feedback">
+                        Please fill in the email
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <label>Kata sandi baru</label>
+                    <input id="password" name="password" type="password" class="form-control" autocomplete="new-password" required>
+                    <div class="invalid-feedback">
+                        Please fill in the email
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <label>Konfirmasi kata sandi</label>
+                    <input id="password_confirmation" name="password_confirmation" type="password" class="form-control" autocomplete="new-password" required>
+                    <div class="invalid-feedback">
+                        Please fill in the email
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group mb-0 col-12">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="remember" class="custom-control-input" id="newsletter">
+                        <label class="custom-control-label" for="newsletter">Lihat kata sandi</label>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer text-right">
+                <button type="submit" class="btn btn-primary">Ubah</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{{-- breeze template --}}
+{{-- <section>
     <header>
         <h2 class="text-lg font-medium text-gray-900">
             {{ __('Update Password') }}
@@ -45,4 +96,4 @@
             @endif
         </div>
     </form>
-</section>
+</section> --}}

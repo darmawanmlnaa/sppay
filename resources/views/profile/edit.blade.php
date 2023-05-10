@@ -1,29 +1,36 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Profile') }}
-        </h2>
-    </x-slot>
+@extends('layouts.app')
+@section('content')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-profile-information-form')
+    <section class="section">
+        <div class="section-header">
+        <h1>Profile</h1>
+        <div class="section-header-breadcrumb">
+            <div class="breadcrumb-item active"><a href="{{ route('dashboard') }}">Dashboard</a></div>
+            <div class="breadcrumb-item">Profile</div>
+        </div>
+        </div>
+
+        <div class="section-body">
+        <div class="row mt-sm-4">
+            <div class="col-12 col-md-12 col-lg-5">
+            <div class="card profile-widget">
+                <div class="profile-widget-header">                     
+                <img alt="image" src="{{ asset('assets/vendor/stisla/dist/assets/img/avatar/avatar-1.png') }}" class="rounded-circle profile-widget-picture">
+                <div class="profile-widget-items">
+                    <div class="profile-widget-item">
+                    <div class="profile-widget-item-label">Tagihan</div>
+                    <div class="profile-widget-item-value">Rp. 2.000.000</div>
+                    </div>
+                </div>
                 </div>
             </div>
-
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-password-form')
-                </div>
             </div>
-
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.delete-user-form')
-                </div>
+            <div class="col-12 col-md-12 col-lg-7">
+                @include('profile.partials.update-profile-information-form')
+                @include('profile.partials.update-password-form')
             </div>
         </div>
-    </div>
-</x-app-layout>
+        </div>
+    </section>
+
+@endsection
