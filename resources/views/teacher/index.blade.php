@@ -7,7 +7,14 @@
     </div>
 
     <div class="section-body">
-        isi
+        <div class="card">
+            <div class="card-header">
+                <h4>Data Petugas</h4>
+            </div>
+            <div class="card-body">
+                isi
+            </div>
+        </div>
     </div>
 </section>
 

@@ -9,6 +9,13 @@
     <link rel="stylesheet" href="<?= asset('assets/vendor/stisla/dist/assets/modules/bootstrap/css/bootstrap.min.css') ?>">
     <link rel="stylesheet" href="<?= asset('assets/vendor/stisla/dist/assets/modules/fontawesome/css/all.min.css') ?>">
 
+    <!-- My Links Or CSS -->
+    @stack('links')
+
+    <!-- DataTables -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.6.2/css/select.bootstrap5.min.css">
+
     <!-- CSS Libraries -->
 
     <!-- Template CSS -->
@@ -68,5 +75,14 @@
     <!-- Template JS File -->
     <script src="<?= asset('assets/vendor/stisla/dist/assets/js/scripts.js') ?>"></script>
     <script src="<?= asset('assets/vendor/stisla/dist/assets/js/custom.js') ?>"></script>
+
+    <!-- My script -->
+    @stack('scripts')
+
+    <!-- DataTables -->
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/select/1.6.2/js/dataTables.select.min.js"></script>
+
 </body>
 </html>
