@@ -1,36 +1,72 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+    <title>Sppay &mdash; Stisla</title>
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+    <!-- General CSS Files -->
+    <link rel="stylesheet" href="<?= asset('assets/vendor/stisla/dist/assets/modules/bootstrap/css/bootstrap.min.css') ?>">
+    <link rel="stylesheet" href="<?= asset('assets/vendor/stisla/dist/assets/modules/fontawesome/css/all.min.css') ?>">
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <!-- CSS Libraries -->
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="<?= asset('assets/vendor/stisla/dist/assets/css/style.css') ?>">
+    <link rel="stylesheet" href="<?= asset('assets/vendor/stisla/dist/assets/css/components.css') ?>">
+    <!-- Start GA -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
+    gtag('config', 'UA-94034622-3');
+    </script>
+<!-- /END GA -->
+</head>
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+<body>
+    <div id="app">
+        <div class="main-wrapper main-wrapper-1">
+        <div class="navbar-bg"></div>
+
+        {{-- navbar --}}
+        @include('layouts.navbar')
+
+        {{-- sidebar --}}
+        @include('layouts.sidebar')
+
+        <!-- Main Content -->
+        <div class="main-content">
+            @yield('content')
         </div>
-    </body>
+        <footer class="main-footer">
+            <div class="footer-left">
+            Copyright &copy; 2018 <div class="bullet"></div> Design By <a href="https://nauval.in/">Muhamad Nauval Azhar</a>
+            </div>
+            <div class="footer-right">
+            
+            </div>
+        </footer>
+        </div>
+    </div>
+
+    <!-- General JS Scripts -->
+    <script src="<?= asset('assets/vendor/stisla/dist/assets/modules/jquery.min.js') ?>"></script>
+    <script src="<?= asset('assets/vendor/stisla/dist/assets/modules/popper.js') ?>"></script>
+    <script src="<?= asset('assets/vendor/stisla/dist/assets/modules/tooltip.js') ?>"></script>
+    <script src="<?= asset('assets/vendor/stisla/dist/assets/modules/bootstrap/js/bootstrap.min.js') ?>"></script>
+    <script src="<?= asset('assets/vendor/stisla/dist/assets/modules/nicescroll/jquery.nicescroll.min.js') ?>"></script>
+    <script src="<?= asset('assets/vendor/stisla/dist/assets/modules/moment.min.js') ?>"></script>
+    <script src="<?= asset('assets/vendor/stisla/dist/assets/js/stisla.js') ?>"></script>
+    
+    <!-- JS Libraies -->
+
+    <!-- Page Specific JS File -->
+    
+    <!-- Template JS File -->
+    <script src="<?= asset('assets/vendor/stisla/dist/assets/js/scripts.js') ?>"></script>
+    <script src="<?= asset('assets/vendor/stisla/dist/assets/js/custom.js') ?>"></script>
+</body>
 </html>
