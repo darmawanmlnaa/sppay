@@ -79,6 +79,53 @@
     <!-- My script -->
     @stack('scripts')
 
+    <!-- Fade alert -->
+    <script type="text/javascript">
+    $(document).ready(function () {
+        window.setTimeout(function() {
+            $(".alert").fadeTo(1000, 0).slideUp(1000, function(){
+                $(this).remove();
+            });
+        }, 1500);
+    });
+    </script>
+
+    <!-- Priview image -->
+    <script type="text/javascript">
+        function priviewImage() {
+            const image = document.querySelector('#thumb');
+            const imgPriview = document.querySelector('.img-priview');
+
+            imgPriview.style.display = 'block';
+
+            const oFReader = new FileReader();
+            oFReader.readAsDataURL(image.files[0]);
+
+            oFReader.onload = function (oFREvent) {
+                imgPriview.src = oFREvent.target.result;
+            }
+        }
+    </script>
+
+    <!-- See password -->
+    <script type="text/javascript">
+        function seePassword() {
+            var pass = document.getElementById("password");
+            if (pass.type === "password") {
+                pass.type = "text";
+            } else {
+                pass.type = "password";
+            }
+
+            var passConfirm = document.getElementById("password_confirmation");
+            if (passConfirm.type === "password") {
+                passConfirm.type = "text";
+            } else {
+                passConfirm.type = "password";
+            }
+        }
+    </script>
+
     <!-- DataTables -->
 	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>

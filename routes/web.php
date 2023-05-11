@@ -34,6 +34,8 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/teacher', [TeacherController::class, 'index'])->name('teacher');
+    Route::get('/teacher/create', [TeacherController::class, 'create'])->name('teacher.create');
+    Route::post('/teacher/store', [TeacherController::class, 'store'])->name('teacher.store');
 });
 
 require __DIR__.'/auth.php';

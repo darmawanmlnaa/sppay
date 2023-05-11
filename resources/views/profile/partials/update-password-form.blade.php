@@ -36,8 +36,8 @@
             <div class="row">
                 <div class="form-group mb-0 col-12">
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" name="remember" class="custom-control-input" id="newsletter">
-                        <label class="custom-control-label" for="newsletter">Lihat kata sandi</label>
+                        <input type="checkbox" name="seepass" class="custom-control-input" id="seepass" onclick="seePassword()">
+                        <label class="custom-control-label" for="seepass">Lihat kata sandi</label>
                     </div>
                 </div>
             </div>
