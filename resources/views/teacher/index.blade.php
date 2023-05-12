@@ -17,7 +17,7 @@
         @endif
         @if (session()->has('alert'))
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                {{session('success')}}
+                {{session('alert')}}
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -41,7 +41,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($users as $key => $get)
+                            @foreach ($teachers as $key => $get)
                                 <tr>
                                     <td>
                                         <div class="row d-fex justify-content-center">
@@ -73,7 +73,7 @@
                                         </button>
                                         </div>
                                         <div class="modal-body">
-                                            Apa anda yakin ingin menghapus <b>{{ $get->name }}</b> dari petugas ?
+                                            Apa anda yakin ingin menghapus user <b>{{ $get->name }}</b> ?
                                         </div>
                                         <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>

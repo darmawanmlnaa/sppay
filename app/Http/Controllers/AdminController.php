@@ -10,21 +10,17 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
-// try use dataTables not both of this work, so i use cdn
-// use DataTables;
-// use Yajra\DataTables\Facades\DataTables;
-
-class TeacherController extends Controller
+class AdminController extends Controller
 {
     public function index()
     {
-        $teachers = User::where('role', 'teacher')->get();
-        return view('teacher.index', ['title' => 'Petugas'], compact(['teachers']));
+        $admins = User::where('role', 'admin')->get();
+        return view('admin.index', ['title' => 'Admin'], compact(['admins']));
     }
 
     public function create()
     {
-        return view('teacher.create', ['title' => 'Registrasi Petugas']);
+        return view('admin.create', ['title' => 'Registrasi Admin']);
     }
 
     public function store(Request $request)
@@ -57,18 +53,18 @@ class TeacherController extends Controller
             ]);
         }
 
-        return redirect('/teacher')->with('success', 'Petugas berhasil ditambahkan!');
+        return redirect('/admin')->with('success', 'Admin Berhasil Ditambahkan!');
     }
 
     public function edit($id)
     {
-        $teacher = User::find($id);
-        return view('teacher.edit', ['title' => 'Ubah data petugas'], compact(['teacher']));
+        $admin = User::find($id);
+        return view('admin.edit', ['title' => 'Ubah data admin'], compact(['admin']));
     }
 
     public function update(Request $request, $id)
     {
-        $teacher = User::find($id);
+        $admin = User::find($id);
 
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -78,7 +74,7 @@ class TeacherController extends Controller
         ]);
 
         if ($request->file('thumb')) {
-            $thumbPath = public_path("storage/".$teacher->thumb);
+            $thumbPath = public_path("storage/".$admin->thumb);
             if (File::exists($thumbPath)) {
                 File::delete($thumbPath);
             }
@@ -96,19 +92,19 @@ class TeacherController extends Controller
                 'email' => $request->email,
             ]);
         }
-        return redirect('/teacher')->with('success', 'Data Petugas Berhasil Diubah!');
+        return redirect('/admin')->with('success', 'Data Admin Berhasil Diubah!');
     }
 
     public function destroy($id)
     {
-        $teacher = User::find($id);
+        $admin = User::find($id);
 
-        if ($teacher->thumb) {
-            Storage::delete($teacher->thumb);
+        if ($admin->thumb) {
+            Storage::delete($admin->thumb);
         }
 
-        $teacher->delete();
+        $admin->delete();
 
-        return redirect('/teacher')->with('success', 'Petugas Berhasil Dihapus!');
+        return redirect('/admin')->with('success', 'Admin Berhasil Dihapus!');
     }
 }
