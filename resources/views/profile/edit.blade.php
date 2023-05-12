@@ -11,6 +11,14 @@
         </div>
 
         <div class="section-body">
+        @if (session()->has('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{session('success')}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
         <div class="row mt-sm-4">
             <div class="col-12 col-md-12 col-lg-5">
             <div class="card profile-widget">
@@ -18,8 +26,13 @@
                 <img alt="image" src="{{ asset('assets/vendor/stisla/dist/assets/img/avatar/avatar-1.png') }}" class="rounded-circle profile-widget-picture">
                 <div class="profile-widget-items">
                     <div class="profile-widget-item">
-                    <div class="profile-widget-item-label">Tagihan</div>
-                    <div class="profile-widget-item-value">Rp. 2.000.000</div>
+                    @if (Auth::user())
+                        <div class="profile-widget-item-label">Status anda adalah</div>
+                        <div class="profile-widget-item-value text-capitalize">{{Auth::user()->role}}</div>
+                    @else
+                        <div class="profile-widget-item-label">Tagihan</div>
+                        <div class="profile-widget-item-value">Rp. 2.000.000</div>
+                    @endif
                     </div>
                 </div>
                 </div>

@@ -28,7 +28,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        {{-- <div class="row">
             <div class="form-group col-md-12">
                 <label>Status</label>
                 <input type="hidden" id="role" name="role" class="form-control" value="{{ Auth::user()->role }}" required="">
@@ -42,7 +42,8 @@
                 @endif
                 </fieldset>
             </div>
-        </div>
+        </div> --}}
+        <input type="hidden" id="role" name="role" class="form-control" value="{{ Auth::user()->role }}" required="">
         <input type="hidden" id="thumb" name="thumb" value="{{ Auth::user()->thumb }}">
     </div>
     <div class="card-footer text-right">
