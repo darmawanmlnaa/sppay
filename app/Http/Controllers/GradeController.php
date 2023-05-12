@@ -29,7 +29,15 @@ class GradeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'grade' => ['required', 'max:10', 'unique:grades,grade'],
+        ]);
+
+        Grade::create([
+            'grade' => $request->grade,
+        ]);
+
+        return redirect('/grade')->with('success', 'Kelas berhasil ditambahkan!');
     }
 
     /**
@@ -45,7 +53,8 @@ class GradeController extends Controller
      */
     public function edit(string $id)
     {
-        return view('grade.edit');
+        $grade = Grade::find($id);
+        return view('grade.edit', compact(['grade']));
     }
 
     /**
@@ -53,7 +62,15 @@ class GradeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'grade' => ['required', 'max:10', 'unique:grades,grade'],
+        ]);
+
+        Grade::where('id', $id)->update([
+            'grade' => $request->grade,
+        ]);
+
+        return redirect('/grade')->with('success', 'Kelas berhasil diubah!');
     }
 
     /**
@@ -61,6 +78,8 @@ class GradeController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $grade = Grade::find($id);
+        $grade->delete();
+        return redirect('/grade')->with('success', 'Kelas berhasil dihapus!');
     }
 }

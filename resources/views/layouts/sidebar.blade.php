@@ -24,7 +24,7 @@
                     <li><a class="nav-link" href="forms-validation.html">Murid</a></li>
                 </ul>
             </li>
-            <li class="dropdown {{ Route::is('grades', 'majors', 'spp') ? 'active' : '' }}">
+            <li class="dropdown {{ Route::is('grade', 'major', 'spp') ? 'active' : '' }}">
             <a href="#" class="nav-link has-dropdown"><i class="far fa-file-alt"></i> <span>Data</span></a>
             <ul class="dropdown-menu">
                 <li class="{{ Route::is('grade') ? 'active' : '' }}"><a class="nav-link" href="{{ route('grade') }}">Kelas</a></li>

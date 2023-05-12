@@ -40,6 +40,7 @@
                                 <tr>
                                     <th>Aksi</th>
                                     <th>No</th>
+                                    <th>ID</th>
                                     <th>Kelas</th>
                                 </tr>
                             </thead>
@@ -52,8 +53,34 @@
                                             </div>
                                         </td>
                                         <td>{{ $key + 1 }}</td>
+                                        <td>{{ $get->id }}</td>
                                         <td>{{ $get->grade }}</td>
                                     </tr>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="deleteModal{{$get->id}}" data-backdrop="false" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                            <h5 class="modal-title" id="staticBackdropLabel">Konfirmasi hapus kelas</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Apa anda yakin ingin menghapus kelas <b>{{ $get->grade }}</b> ?
+                                            </div>
+                                            <div class="modal-footer">
+                                            <form action="grade/destroy/{{ $get->id }}" method="post">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" class="btn btn-danger">Hapus</button>
+                                            </form>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
                                 @endforeach
                             <tbody>
                             </tbody>
