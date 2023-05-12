@@ -4,6 +4,11 @@
 <section class="section">
     <div class="section-header">
         <h1>Registrasi Petugas</h1>
+
+        <div class="section-header-breadcrumb">
+            <div class="breadcrumb-item active"><a href="{{ route('teacher') }}">Petugas</a></div>
+            <div class="breadcrumb-item">Registrasi</div>
+        </div>
     </div>
 
     <div class="section-body">

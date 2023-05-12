@@ -194,27 +194,69 @@
         </div>
     </li> --}}
     <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-        <img alt="image" src="{{ asset('assets/vendor/stisla/dist/assets/img/avatar/avatar-1.png') }}" class="rounded-circle mr-1">
+        @if (Auth::user()->thumb)
+            <img alt="image" src="{{ asset('storage/'.Auth::user()->thumb) }}" class="rounded-circle mr-1">
+        @else
+            <img alt="image" src="{{ asset('assets/vendor/stisla/dist/assets/img/avatar/avatar-1.png') }}" class="rounded-circle mr-1">
+        @endif
         <div class="d-sm-none d-lg-inline-block">{{ Auth::user()->name }}</div></a>
         <div class="dropdown-menu dropdown-menu-right">
         {{-- <div class="dropdown-title">Logged in 5 min ago</div> --}}
         <a href="{{ route('profile.edit') }}" class="dropdown-item has-icon">
-            <i class="far fa-user"></i> Profile
+            <i class="far fa-user"></i> Profil
         </a>
         <a href="features-activities.html" class="dropdown-item has-icon">
-            <i class="fas fa-bolt"></i> Activities
+            <i class="fas fa-bolt"></i> Aktivitas
         </a>
         {{-- <a href="features-settings.html" class="dropdown-item has-icon">
-            <i class="fas fa-cog"></i> Settings
+            <i class="fas fa-cog"></i> Pengaturan
         </a> --}}
         <div class="dropdown-divider"></div>
-        <form action="{{ route('logout') }}" method="post">
+        {{-- Manual modal --}}
+        <button class="dropdown-item has-icon text-danger" data-toggle="modal" data-target="#logoutModal">
+            <i class="fas fa-sign-out-alt"> <span style="font-weight: normal; font-family: nunito;">Keluar</span></i>
+        </button>
+        {{-- Stisla logout component --}}
+        {{-- <form action="{{ route('logout') }}" method="post" id="logout">
             @csrf
-            <button type="submit" class="dropdown-item has-icon text-danger">
-                <i class="fas fa-sign-out-alt"> <span style="font-weight: normal; font-family: nunito;">Logout</span></i>
+            <button type="submit" class="dropdown-item has-icon text-danger" data-confirm="Konfirmasi keluar|Apakah anda yakin ingin keluar ?" data-confirm-yes="acceptLogout()">
+                <i class="fas fa-sign-out-alt"> <span style="font-weight: normal; font-family: nunito;">Keluar</span></i>
             </button>
-        </form>
+        </form> --}}
         </div>
     </li>
     </ul>
 </nav>
+
+<!-- Modal -->
+<div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Konfirmasi Keluar</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+            Apakah anda yakin ingin keluar ?
+        </div>
+        <div class="modal-footer">
+        <form action="{{ route('logout') }}" method="post" id="logout">
+        @csrf
+        <button type="submit" class="btn btn-danger">Keluar</button>
+        </form>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+    </div>
+</div>
+
+{{-- @push('scripts')
+    <script type="text/javascript">
+        // stisla modal component
+        // function acceptLogout() {
+        //     $('#logout').submit()
+        // }
+    </script>
+@endpush --}}

@@ -26,9 +26,12 @@
                 <img alt="image" src="{{ asset('assets/vendor/stisla/dist/assets/img/avatar/avatar-1.png') }}" class="rounded-circle profile-widget-picture">
                 <div class="profile-widget-items">
                     <div class="profile-widget-item">
-                    @if (Auth::user())
+                    @if (Auth::user()->role == 'admin')
                         <div class="profile-widget-item-label">Status anda adalah</div>
-                        <div class="profile-widget-item-value text-capitalize">{{Auth::user()->role}}</div>
+                        <div class="profile-widget-item-value text-capitalize">Admin</div>
+                    @elseif (Auth::user()->role == 'teacher')
+                        <div class="profile-widget-item-label">Status anda adalah</div>
+                        <div class="profile-widget-item-value text-capitalize">Petugas</div>
                     @else
                         <div class="profile-widget-item-label">Tagihan</div>
                         <div class="profile-widget-item-value">Rp. 2.000.000</div>

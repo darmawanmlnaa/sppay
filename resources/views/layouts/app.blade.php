@@ -15,7 +15,7 @@
     <!-- DataTables -->
     {{-- bootstrap 4 --}}
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap4.min.css">
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.6.2/css/select.bootstrap4.min.css">
+	{{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.6.2/css/select.bootstrap4.min.css"> --}}
     {{-- bootstrap 5 --}}
     {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css"> --}}
 	{{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.6.2/css/select.bootstrap5.min.css"> --}}
@@ -134,7 +134,7 @@
     {{-- bootstrap 4 --}}
 	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap4.min.js"></script>
-	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/select/1.6.2/js/dataTables.select.min.js"></script>
+	{{-- <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/select/1.6.2/js/dataTables.select.min.js"></script> --}}
     {{-- bootstrap 5 --}}
 	{{-- <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script> --}}
 	{{-- <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script> --}}

@@ -3,6 +3,11 @@
     <section class="section">
         <div class="section-header">
             <h1>Admin</h1>
+
+            <div class="section-header-breadcrumb">
+                <div class="breadcrumb-item active"><a href="{{ route('dashboard') }}">Dashboard</a></div>
+                <div class="breadcrumb-item">Admin</div>
+            </div>
         </div>
         
         <div class="section-body">
@@ -47,6 +52,9 @@
                                         <td>
                                             <div class="row d-fex justify-content-center">
                                                 <a href="admin/edit/{{ $get->id }}" class="btn btn-icon btn-primary mx-2"><i class="far fa-edit"></i></a>
+                                                {{-- Stisla component --}}
+                                                {{-- <button class="btn btn-icon btn-danger" data-confirm="Konfirmasi hapus admin|Apakah anda yakin ingin menghapus user {{ $get->name }} ?" data-confirm-yes="acceptDelete({{ $get->id }})"><i class="fas fa-trash"></i></button> --}}
+                                                {{-- Manual modal --}}
                                                 <button class="btn btn-icon btn-danger" data-toggle="modal" data-target="#deleteModal{{$get->id}}"><i class="fas fa-trash"></i></button>
                                             </div>
                                         </td>
@@ -64,6 +72,7 @@
                                     </tr>
     
                                     <!-- Modal -->
+                                    {{-- Manual Modal --}}
                                     <div class="modal fade" id="deleteModal{{$get->id}}" data-backdrop="false" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                         <div class="modal-content">
@@ -77,12 +86,12 @@
                                                 Apa anda yakin ingin menghapus user <b>{{ $get->name }}</b> ?
                                             </div>
                                             <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                                             <form action="admin/destroy/{{ $get->id }}" method="post">
                                                 @csrf
                                                 @method('delete')
                                                 <button type="submit" class="btn btn-danger">Hapus</button>
                                             </form>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                                             </div>
                                         </div>
                                         </div>
