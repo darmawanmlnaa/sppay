@@ -44,8 +44,8 @@
                             @foreach ($users as $key => $get)
                                 <tr>
                                     <td>
-                                        <div class="row d-fex justify-content-sm-around">
-                                            <a href="#" class="btn btn-icon btn-primary"><i class="far fa-edit"></i></a>
+                                        <div class="row d-fex justify-content-center">
+                                            <a href="teacher/edit/{{ $get->id }}" class="btn btn-icon btn-primary mx-2"><i class="far fa-edit"></i></a>
                                             <button class="btn btn-icon btn-danger" data-toggle="modal" data-target="#deleteModal{{$get->id}}"><i class="fas fa-trash"></i></button>
                                         </div>
                                     </td>
