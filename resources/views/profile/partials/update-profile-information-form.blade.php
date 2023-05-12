@@ -7,7 +7,7 @@
     @csrf
     @method('patch')
     <div class="card-header">
-        <h4>Edit Profile</h4>
+        <h4>Edit Profil</h4>
     </div>
     <div class="card-body">
         <div class="row">                               

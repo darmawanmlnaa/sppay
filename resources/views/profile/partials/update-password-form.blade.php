@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header">
-        <h4>Ubah Password</h4>
+        <h4>Ubah Kata Sandi</h4>
     </div>
     <div class="card-body">
         <form action="{{ route('password.update') }}" method="post" class="needs-validation">
