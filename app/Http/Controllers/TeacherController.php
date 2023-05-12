@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 // try use dataTables not both of this work, so i use cdn
 // use DataTables;
@@ -36,7 +37,8 @@ class TeacherController extends Controller
         ]);
 
         if ($request->has('thumb')) {
-            $thumbName = $request->file('thumb')->getClientOriginalName();
+            // $thumbName = $request->file('thumb')->getClientOriginalName();
+            $thumbName = time().'.'.$request->thumb->extension();
             $user = User::create([
                 'name' => $request->name,
                 'role' => $request->role,
@@ -54,6 +56,19 @@ class TeacherController extends Controller
             ]);
         }
 
-        return redirect('/teacher')->with('success', 'Berhasil ditambahkan!');
+        return redirect('/teacher')->with('success', 'Petugas berhasil ditambahkan!');
+    }
+
+    public function destroy($id)
+    {
+        $user = User::find($id);
+
+        if ($user->thumb) {
+            Storage::delete($user->thumb);
+        }
+
+        $user->delete();
+
+        return redirect('/teacher')->with('success', 'Petugas Berhasil Dihapus!');
     }
 }

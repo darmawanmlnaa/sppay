@@ -36,6 +36,7 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/teacher', [TeacherController::class, 'index'])->name('teacher');
     Route::get('/teacher/create', [TeacherController::class, 'create'])->name('teacher.create');
     Route::post('/teacher/store', [TeacherController::class, 'store'])->name('teacher.store');
+    Route::delete('/teacher/destroy/{id}', [TeacherController::class, 'destroy'])->name('teacher.destroy');
 });
 
 require __DIR__.'/auth.php';

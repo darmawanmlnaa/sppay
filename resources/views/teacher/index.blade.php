@@ -7,9 +7,20 @@
     </div>
 
     <div class="section-body">
-        @if ($message = Session::has('success'))
-            <div class="alert alert-success">
-                {{ $message }}
+        @if (session()->has('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{session('success')}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
+        @if (session()->has('alert'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{session('success')}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
         @endif
         <div class="card">
@@ -17,39 +28,68 @@
                 <a href="{{ route('teacher.create') }}" class="btn btn-icon icon-left btn-primary"><i class="fas fa-plus"></i> Tambah</a>
             </div>
             <div class="card-body">
-                <table class="table table-striped table-bordered" id="teacher-table">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>ID</th>
-                            <th>Nama</th>
-                            <th>Email</th>
-                            <th>Profil</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($users as $key => $get)
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered" id="teacher-table">
+                        <thead>
                             <tr>
-                                <td>{{ $key + 1 }}</td>
-                                <td>{{ $get->id }}</td>
-                                <td>{{ $get->name }}</td>
-                                <td>{{ $get->email }}</td>
-                                @if ($get->thumb == null)
-                                <td><img src="{{ asset('assets/vendor/stisla/dist/assets/img/avatar/avatar-1.png') }}" alt="default" height="50"></td>
-                                @else
-                                <td>
-                                    <img src="{{ asset('storage/'.$get->thumb) }}" alt="profile" height="50">
-                                </td>
-                                @endif
-                                <td>
-                                    <a href="#" class="btn btn-icon btn-primary"><i class="far fa-edit"></i></a>
-                                    <a href="#" class="btn btn-icon btn-danger"><i class="fas fa-trash"></i></a>
-                                </td>
+                                <th>Aksi</th>
+                                <th>No</th>
+                                <th>ID</th>
+                                <th>Nama</th>
+                                <th>Email</th>
+                                <th>Profil</th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            @foreach ($users as $key => $get)
+                                <tr>
+                                    <td>
+                                        <div class="row d-fex justify-content-sm-around">
+                                            <a href="#" class="btn btn-icon btn-primary"><i class="far fa-edit"></i></a>
+                                            <button class="btn btn-icon btn-danger" data-toggle="modal" data-target="#deleteModal{{$get->id}}"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                    <td>{{ $key + 1 }}</td>
+                                    <td>{{ $get->id }}</td>
+                                    <td>{{ $get->name }}</td>
+                                    <td>{{ $get->email }}</td>
+                                    @if ($get->thumb == null)
+                                    <td><img src="{{ asset('assets/vendor/stisla/dist/assets/img/avatar/avatar-1.png') }}" alt="default" height="50"></td>
+                                    @else
+                                    <td>
+                                        <img src="{{ asset('storage/'.$get->thumb) }}" alt="profile" height="50">
+                                    </td>
+                                    @endif
+                                </tr>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="deleteModal{{$get->id}}" data-backdrop="false" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">Konfirmasi hapus petugas</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Apa anda yakin ingin menghapus <b>{{ $get->name }}</b> dari petugas ?
+                                        </div>
+                                        <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                        <form action="teacher/destroy/{{ $get->id }}" method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="btn btn-danger">Hapus</button>
+                                        </form>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -57,15 +97,15 @@
 
 @push('scripts')
     <script type="text/javascript">
-        $(document).ready(function() {
-            $('#teacher-table').DataTable( {
+        $(document).ready(function(){
+            $('#teacher-table').DataTable({
                 processing: true,
                 // serverSide: true,
                 language: {
                     url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/id.json',
                 },
-            } );
-        } );
+            });
+        });
     </script>
 @endpush
 
