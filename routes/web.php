@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\GradeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +50,16 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/admin/edit/{id}', [AdminController::class, 'edit'])->name('admin.edit');
     Route::put('/admin/edit/{id}', [AdminController::class, 'update'])->name('admin.update');
     Route::delete('/admin/destroy/{id}', [AdminController::class, 'destroy'])->name('admin.destroy');
+});
+
+Route::middleware(['auth'])->group(function () {
+    // grade
+    Route::get('/grade', [GradeController::class, 'index'])->name('grade');
+    Route::get('/grade/create', [GradeController::class, 'create'])->name('grade.create');
+    Route::post('/grade/store', [GradeController::class, 'store'])->name('grade.store');
+    Route::get('/grade/edit/{id}', [GradeController::class, 'edit'])->name('grade.edit');
+    Route::put('/grade/edit/{id}', [GradeController::class, 'update'])->name('grade.update');
+    Route::delete('/grade/destroy/{id}', [GradeController::class, 'destroy'])->name('grade.destroy');
 });
 
 require __DIR__.'/auth.php';

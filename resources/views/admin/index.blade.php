@@ -35,7 +35,7 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-striped table-bordered" id="teacher-table">
+                        <table class="table table-striped table-bordered" id="admin-table">
                             <thead>
                                 <tr>
                                     <th>Aksi</th>
@@ -105,3 +105,17 @@
         </div>
     </section>
 @endsection
+
+@push('scripts')
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#admin-table').DataTable({
+                processing: true,
+                // serverSide: true,
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/id.json',
+                },
+            });
+        });
+    </script>
+@endpush

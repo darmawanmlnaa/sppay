@@ -24,12 +24,12 @@
                     <li><a class="nav-link" href="forms-validation.html">Murid</a></li>
                 </ul>
             </li>
-            <li class="dropdown">
+            <li class="dropdown {{ Route::is('grades', 'majors', 'spp') ? 'active' : '' }}">
             <a href="#" class="nav-link has-dropdown"><i class="far fa-file-alt"></i> <span>Data</span></a>
             <ul class="dropdown-menu">
-                <li><a class="nav-link" href="forms-advanced-form.html">Kelas</a></li>
-                <li><a class="nav-link" href="forms-editor.html">Jurusan</a></li>
-                <li><a class="nav-link" href="forms-validation.html">SPP</a></li>
+                <li class="{{ Route::is('grade') ? 'active' : '' }}"><a class="nav-link" href="{{ route('grade') }}">Kelas</a></li>
+                <li class="{{ Route::is('major') ? 'active' : '' }}"><a class="nav-link" href="forms-editor.html">Jurusan</a></li>
+                <li class="{{ Route::is('spp') ? 'active' : '' }}"><a class="nav-link" href="forms-validation.html">SPP</a></li>
             </ul>
             </li>
         @endif
@@ -41,12 +41,12 @@
             <li class="dropdown">
                 <a href="#" class="nav-link"><i class="far fa-user"></i> <span>Murid</span></a>
             </li>
-            <li class="dropdown">
+            <li class="dropdown {{ Route::is('grade', 'major', 'spp') ? 'active' : '' }}">
             <a href="#" class="nav-link has-dropdown"><i class="far fa-file-alt"></i> <span>Data</span></a>
             <ul class="dropdown-menu">
-                <li><a class="nav-link" href="forms-advanced-form.html">Kelas</a></li>
-                <li><a class="nav-link" href="forms-editor.html">Jurusan</a></li>
-                <li><a class="nav-link" href="forms-validation.html">SPP</a></li>
+                <li class="{{ Route::is('grade') ? 'active' : '' }}"><a class="nav-link" href="{{ route('grade') }}">Kelas</a></li>
+                <li class="{{ Route::is('major') ? 'active' : '' }}"><a class="nav-link" href="forms-editor.html">Jurusan</a></li>
+                <li class="{{ Route::is('spp') ? 'active' : '' }}"><a class="nav-link" href="forms-validation.html">SPP</a></li>
             </ul>
             </li>
         @endif
