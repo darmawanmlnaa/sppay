@@ -78,7 +78,7 @@
                         <h4>Jumlah Data SPP</h4>
                     </div>
                     <div class="card-body">
-                        {{ $teachers->count() }}
+                        {{ $spp->count() }}
                     </div>
                     </div>
                 </div>

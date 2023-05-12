@@ -7,6 +7,7 @@ use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\MajorController;
+use App\Http\Controllers\SppController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,6 +70,14 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/major/edit/{id}', [MajorController::class, 'edit'])->name('major.edit');
     Route::put('/major/edit/{id}', [MajorController::class, 'update'])->name('major.update');
     Route::delete('/major/destroy/{id}', [MajorController::class, 'destroy'])->name('major.destroy');
+
+    // spp
+    Route::get('/spp', [SppController::class, 'index'])->name('spp');
+    Route::get('/spp/create', [SppController::class, 'create'])->name('spp.create');
+    Route::post('/spp/store', [SppController::class, 'store'])->name('spp.store');
+    Route::get('/spp/edit/{id}', [SppController::class, 'edit'])->name('spp.edit');
+    Route::put('/spp/edit/{id}', [SppController::class, 'update'])->name('spp.update');
+    Route::delete('/spp/destroy/{id}', [SppController::class, 'destroy'])->name('spp.destroy');
 });
 
 require __DIR__.'/auth.php';

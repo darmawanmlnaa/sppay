@@ -29,7 +29,7 @@
             <ul class="dropdown-menu">
                 <li class="{{ Route::is('grade') ? 'active' : '' }}"><a class="nav-link" href="{{ route('grade') }}">Kelas</a></li>
                 <li class="{{ Route::is('major') ? 'active' : '' }}"><a class="nav-link" href="{{ route('major') }}">Jurusan</a></li>
-                <li class="{{ Route::is('spp') ? 'active' : '' }}"><a class="nav-link" href="forms-validation.html">SPP</a></li>
+                <li class="{{ Route::is('spp') ? 'active' : '' }}"><a class="nav-link" href="{{ route('spp') }}">Spp</a></li>
             </ul>
             </li>
         @endif
@@ -46,7 +46,7 @@
             <ul class="dropdown-menu">
                 <li class="{{ Route::is('grade') ? 'active' : '' }}"><a class="nav-link" href="{{ route('grade') }}">Kelas</a></li>
                 <li class="{{ Route::is('major') ? 'active' : '' }}"><a class="nav-link" href="{{ route('major') }}">Jurusan</a></li>
-                <li class="{{ Route::is('spp') ? 'active' : '' }}"><a class="nav-link" href="forms-validation.html">SPP</a></li>
+                <li class="{{ Route::is('spp') ? 'active' : '' }}"><a class="nav-link" href="{{ route('spp') }}">SPP</a></li>
             </ul>
             </li>
         @endif

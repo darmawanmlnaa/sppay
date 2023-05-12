@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Grade;
 use App\Models\Major;
+use App\Models\Spp;
 
 class HomeController extends Controller
 {
@@ -15,6 +16,7 @@ class HomeController extends Controller
         $teachers = User::where('role', 'teacher')->get();
         $grades = Grade::all();
         $majors = Major::all();
-        return view('dashboard', compact(['admins', 'teachers', 'grades', 'majors']));
+        $spp = Spp::all();
+        return view('dashboard', compact(['admins', 'teachers', 'grades', 'majors', 'spp']));
     }
 }
