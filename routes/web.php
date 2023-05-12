@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GradeController;
+use App\Http\Controllers\MajorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,6 +61,14 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/grade/edit/{id}', [GradeController::class, 'edit'])->name('grade.edit');
     Route::put('/grade/edit/{id}', [GradeController::class, 'update'])->name('grade.update');
     Route::delete('/grade/destroy/{id}', [GradeController::class, 'destroy'])->name('grade.destroy');
+
+    // major
+    Route::get('/major', [MajorController::class, 'index'])->name('major');
+    Route::get('/major/create', [MajorController::class, 'create'])->name('major.create');
+    Route::post('/major/store', [MajorController::class, 'store'])->name('major.store');
+    Route::get('/major/edit/{id}', [MajorController::class, 'edit'])->name('major.edit');
+    Route::put('/major/edit/{id}', [MajorController::class, 'update'])->name('major.update');
+    Route::delete('/major/destroy/{id}', [MajorController::class, 'destroy'])->name('major.destroy');
 });
 
 require __DIR__.'/auth.php';

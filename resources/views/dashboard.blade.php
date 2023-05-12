@@ -93,7 +93,7 @@
                         <h4>Jumlah Data Kelas</h4>
                     </div>
                     <div class="card-body">
-                        {{ $teachers->count() }}
+                        {{ $grades->count() }}
                     </div>
                     </div>
                 </div>
@@ -108,7 +108,7 @@
                         <h4>Jumlah Data Jurusan</h4>
                     </div>
                     <div class="card-body">
-                        {{ $teachers->count() }}
+                        {{ $majors->count() }}
                     </div>
                     </div>
                 </div>

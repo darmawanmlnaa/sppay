@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Grade;
+use App\Models\Major;
 
 class HomeController extends Controller
 {
@@ -11,6 +13,8 @@ class HomeController extends Controller
     {
         $admins = User::where('role', 'admin')->get();
         $teachers = User::where('role', 'teacher')->get();
-        return view('dashboard', compact(['admins', 'teachers']));
+        $grades = Grade::all();
+        $majors = Major::all();
+        return view('dashboard', compact(['admins', 'teachers', 'grades', 'majors']));
     }
 }

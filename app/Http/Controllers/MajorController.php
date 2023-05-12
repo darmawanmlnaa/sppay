@@ -3,17 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Grade;
+use App\Models\Major;
 
-class GradeController extends Controller
+class MajorController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $grades = Grade::all();
-        return view('grade.index', ['title' => 'Kelas'], compact(['grades']));
+        $majors = Major::all();
+        return view('major.index', ['title' => 'Jurusan'], compact(['majors']));
     }
 
     /**
@@ -21,7 +21,7 @@ class GradeController extends Controller
      */
     public function create()
     {
-        return view('grade.create', ['title' => 'Tambah Kelas']);
+        return view('major.create', ['title' => 'Tambah Jurusan']);
     }
 
     /**
@@ -30,14 +30,14 @@ class GradeController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'grade' => ['required', 'max:10', 'unique:grades,grade'],
+            'major' => ['required', 'max:100', 'unique:majors,major'],
         ]);
 
-        Grade::create([
-            'grade' => $request->grade,
+        Major::create([
+            'major' => $request->major,
         ]);
 
-        return redirect('/grade')->with('success', 'Kelas berhasil ditambahkan!');
+        return redirect('/major')->with('success', 'Jurusan berhasil ditambahkan!');
     }
 
     /**
@@ -53,8 +53,8 @@ class GradeController extends Controller
      */
     public function edit(string $id)
     {
-        $grade = Grade::find($id);
-        return view('grade.edit', ['title' => 'Ubah Kelas'], compact(['grade']));
+        $major = Major::find($id);
+        return view('major.edit', ['title' => 'Edit Jurusan'], compact(['major']));
     }
 
     /**
@@ -63,14 +63,14 @@ class GradeController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'grade' => ['required', 'max:10', 'unique:grades,grade'],
+            'major' => ['required', 'max:100', 'unique:majors,major'],
         ]);
 
-        Grade::where('id', $id)->update([
-            'grade' => $request->grade,
+        Major::where('id', $id)->update([
+            'major' => $request->major,
         ]);
 
-        return redirect('/grade')->with('success', 'Kelas berhasil diubah!');
+        return redirect('/major')->with('success', 'Jurusan berhasil diubah!');
     }
 
     /**
@@ -78,8 +78,8 @@ class GradeController extends Controller
      */
     public function destroy(string $id)
     {
-        $grade = Grade::find($id);
-        $grade->delete();
-        return redirect('/grade')->with('success', 'Kelas berhasil dihapus!');
+        $major = Major::find($id);
+        $major->delete();
+        return redirect('/major')->with('success', 'Jurusan berhasil dihapus!');
     }
 }
