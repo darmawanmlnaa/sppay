@@ -8,6 +8,9 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\MajorController;
 use App\Http\Controllers\SppController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\Student\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +31,7 @@ Route::get('/', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
+// admin and teacher dashboard
 Route::get('/dashboard', [HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -78,6 +82,38 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/spp/edit/{id}', [SppController::class, 'edit'])->name('spp.edit');
     Route::put('/spp/edit/{id}', [SppController::class, 'update'])->name('spp.update');
     Route::delete('/spp/destroy/{id}', [SppController::class, 'destroy'])->name('spp.destroy');
+
+    // student
+    Route::get('/student', [StudentController::class, 'index'])->name('student');
+    Route::get('/student/create', [StudentController::class, 'create'])->name('student.create');
+    Route::post('/student/store', [StudentController::class, 'store'])->name('student.store');
+    Route::get('/student/edit/{id}', [StudentController::class, 'edit'])->name('student.edit');
+    Route::put('/student/edit/{id}', [StudentController::class, 'update'])->name('student.update');
+    Route::delete('/student/destroy/{id}', [StudentController::class, 'destroy'])->name('student.destroy');
 });
 
 require __DIR__.'/auth.php';
+
+// student auth
+Route::middleware('guest')->group(function () {
+    Route::get('student-login', [AuthenticatedSessionController::class, 'create'])
+                ->name('student.login');
+
+    Route::post('student-login', [AuthenticatedSessionController::class, 'store']);
+
+    // Route::get('student-forgot-password', [PasswordResetLinkController::class, 'create'])
+    //             ->name('student.password.request');
+
+    // Route::post('student-forgot-password', [PasswordResetLinkController::class, 'store'])
+    //             ->name('student.password.email');
+
+    // Route::get('student-reset-password/{token}', [NewPasswordController::class, 'create'])
+    //             ->name('student.password.reset');
+
+    // Route::post('student-reset-password', [NewPasswordController::class, 'store'])
+    //             ->name('student.password.store');
+});
+
+Route::middleware('auth:student')->group(function () {
+    Route::get('/student/dashboard', [StudentController::class, 'studentDashboard'])->name('student.dashboard');
+});

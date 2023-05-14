@@ -40,7 +40,7 @@ class AdminController extends Controller
                 'name' => $request->name,
                 'role' => $request->role,
                 'email' => $request->email,
-                'thumb' => $request->thumb->storeAs('teacher_thumbs', $thumbName),
+                'thumb' => $request->thumb->storeAs('thumbs', $thumbName),
                 'password' => Hash::make($request->password),
             ]);
         } else {

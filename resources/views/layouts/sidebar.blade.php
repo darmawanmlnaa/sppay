@@ -16,12 +16,12 @@
             <li class="dropdown">
                 <a href="#" class="nav-link"><i class="fas fa-dollar-sign"></i> <span>Pembayaran</span></a>
             </li>
-            <li class="dropdown {{ Route::is('admin', 'teacher') ? 'active' : '' }}">
+            <li class="dropdown {{ Route::is('admin', 'teacher', 'student') ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown"><i class="far fa-user"></i> <span>Pengguna</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ Route::is('admin') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin') }}">Admin</a></li>
                     <li class="{{ Route::is('teacher') ? 'active' : '' }}"><a class="nav-link" href="{{ route('teacher') }}">Petugas</a></li>
-                    <li><a class="nav-link" href="forms-validation.html">Murid</a></li>
+                    <li class="{{ Route::is('student') ? 'active' : '' }}"><a class="nav-link" href="{{ route('student') }}">Murid</a></li>
                 </ul>
             </li>
             <li class="dropdown {{ Route::is('grade', 'major', 'spp') ? 'active' : '' }}">
@@ -38,8 +38,8 @@
             <li class="dropdown">
                 <a href="#" class="nav-link"><i class="fas fa-dollar-sign"></i> <span>Pembayaran</span></a>
             </li>
-            <li class="dropdown">
-                <a href="#" class="nav-link"><i class="far fa-user"></i> <span>Murid</span></a>
+            <li class="dropdown {{ Route::is('student') ? 'active' : '' }}">
+                <a href="{{ route('student') }}" class="nav-link"><i class="far fa-user"></i> <span>Murid</span></a>
             </li>
             <li class="dropdown {{ Route::is('grade', 'major', 'spp') ? 'active' : '' }}">
             <a href="#" class="nav-link has-dropdown"><i class="far fa-file-alt"></i> <span>Data</span></a>

@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Grade;
 use App\Models\Major;
 use App\Models\Spp;
+use App\Models\Student;
 
 class HomeController extends Controller
 {
@@ -17,6 +18,7 @@ class HomeController extends Controller
         $grades = Grade::all();
         $majors = Major::all();
         $spp = Spp::all();
-        return view('dashboard', compact(['admins', 'teachers', 'grades', 'majors', 'spp']));
+        $students = Student::all();
+        return view('dashboard', compact(['admins', 'teachers', 'grades', 'majors', 'spp', 'students']));
     }
 }

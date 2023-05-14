@@ -44,7 +44,7 @@ class TeacherController extends Controller
                 'name' => $request->name,
                 'role' => $request->role,
                 'email' => $request->email,
-                'thumb' => $request->thumb->storeAs('teacher_thumbs', $thumbName),
+                'thumb' => $request->thumb->storeAs('thumbs', $thumbName),
                 'password' => Hash::make($request->password),
             ]);
         } else {
@@ -60,13 +60,13 @@ class TeacherController extends Controller
         return redirect('/teacher')->with('success', 'Petugas berhasil ditambahkan!');
     }
 
-    public function edit($id)
+    public function edit(string $id)
     {
         $teacher = User::find($id);
         return view('teacher.edit', ['title' => 'Ubah data petugas'], compact(['teacher']));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, string $id)
     {
         $teacher = User::find($id);
 
@@ -99,7 +99,7 @@ class TeacherController extends Controller
         return redirect('/teacher')->with('success', 'Data Petugas Berhasil Diubah!');
     }
 
-    public function destroy($id)
+    public function destroy(string $id)
     {
         $teacher = User::find($id);
 

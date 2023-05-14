@@ -48,7 +48,7 @@
                         <h4>Jumlah Siswa</h4>
                     </div>
                     <div class="card-body">
-                        {{ $teachers->count() }}
+                        {{ $students->count() }}
                     </div>
                     </div>
                 </div>
