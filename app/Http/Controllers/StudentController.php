@@ -161,4 +161,9 @@ class StudentController extends Controller
 
         return redirect('/student')->with('success', 'Murid Berhasil Dihapus!');
     }
+
+    public function studentDashboard()
+    {
+        return view('student.dashboard', ['title' => 'Dashboard']);
+    }
 }

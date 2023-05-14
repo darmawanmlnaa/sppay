@@ -116,4 +116,6 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth:student')->group(function () {
     Route::get('/student/dashboard', [StudentController::class, 'studentDashboard'])->name('student.dashboard');
+    Route::post('/student/logout', [AuthenticatedSessionController::class, 'destroy'])
+    ->name('student.logout');
 });
