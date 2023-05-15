@@ -11,6 +11,7 @@ use App\Http\Controllers\SppController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\Student\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -90,6 +91,14 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/student/edit/{id}', [StudentController::class, 'edit'])->name('student.edit');
     Route::put('/student/edit/{id}', [StudentController::class, 'update'])->name('student.update');
     Route::delete('/student/destroy/{id}', [StudentController::class, 'destroy'])->name('student.destroy');
+
+    // payment
+    Route::get('/payment', [PaymentController::class, 'index'])->name('payment');
+    Route::get('/payment/offline', [PaymentController::class, 'studentList'])->name('payment.offline');
+    Route::get('/payment/offline/pay/{id}', [PaymentController::class, 'createOfflinePayment'])->name('payment.offline.pay');
+    Route::post('/payment/offline/pay/store', [PaymentController::class, 'storeOfflinePayment'])->name('payment.offline.store');
+    Route::get('/payment/offline/details/{id}', [PaymentController::class, 'studentPaymentDetails'])->name('payment.offline.details');
+    Route::get('/payment/latest', [PaymentController::class, 'latestPayments'])->name('payment.latest');
 });
 
 require __DIR__.'/auth.php';

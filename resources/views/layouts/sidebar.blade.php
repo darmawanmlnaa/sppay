@@ -13,8 +13,8 @@
         </li>
         @if (Auth::user()->role == 'admin')
             <li class="menu-header">Akses</li>
-            <li class="dropdown">
-                <a href="#" class="nav-link"><i class="fas fa-dollar-sign"></i> <span>Pembayaran</span></a>
+            <li class="dropdown {{ Route::is('payment') ? 'active' : '' }}">
+                <a href="{{ route('payment') }}" class="nav-link"><i class="fas fa-dollar-sign"></i> <span>Pembayaran</span></a>
             </li>
             <li class="dropdown {{ Route::is('admin', 'teacher', 'student') ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown"><i class="far fa-user"></i> <span>Pengguna</span></a>

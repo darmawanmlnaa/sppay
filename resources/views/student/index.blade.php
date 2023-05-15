@@ -54,7 +54,7 @@
                                     <tr>
                                         <td>
                                             <div class="row d-fex justify-content-center">
-                                                <a href="student/edit/{{ $get->id }}" class="btn btn-icon btn-primary mx-1"><i class="far fa-edit"></i></a>
+                                                <a href="student/edit/{{ $get->id }}" class="btn btn-icon btn-primary mx-1 my-1"><i class="far fa-edit"></i></a>
                                                 <button class="btn btn-icon btn-danger mx-1" data-toggle="modal" data-target="#deleteModal{{$get->id}}"><i class="fas fa-trash"></i></button>
                                             </div>
                                         </td>
@@ -62,9 +62,9 @@
                                         <td>{{ $get->id }}</td>
                                         <td>{{ $get->nis }}</td>
                                         <td>{{ $get->name }}</td>
-                                        <td>{{ $get->grade_id }}</td>
-                                        <td>{{ $get->major_id }}</td>
-                                        <td>{{ $get->spp_id }}</td>
+                                        <td>{{ $get->grade->grade }}</td>
+                                        <td>{{ $get->major->major }}</td>
+                                        <td>@currency($get->spp->amount)</td>
                                         <td>{{ $get->email }}</td>
                                         @if ($get->thumb == null)
                                             <td><img src="{{ asset('assets/vendor/stisla/dist/assets/img/avatar/avatar-1.png') }}" alt="default" height="50"></td>
