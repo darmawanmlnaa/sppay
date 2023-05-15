@@ -27,7 +27,7 @@
                         @foreach ($payments as $get)
                             <li class="media">
                                 <div class="media-body">
-                                    <div class="badge badge-pill badge-success mb-1 float-right">Lunas</div>
+                                    <div class="badge badge-pill badge-danger mb-1 float-right"><i class="fas fa-download"></i></div>
                                     <h6 class="media-title"><a href="#">@currency($get->amount)</a></h6>
                                     <div class="text-small text-muted">{{ $get->user->name }} <div class="bullet"></div> <span class="text-primary">{{ $get->created_at }}</span></div>
                                 </div>

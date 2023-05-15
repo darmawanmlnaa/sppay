@@ -98,6 +98,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/payment/offline/pay/{id}', [PaymentController::class, 'createOfflinePayment'])->name('payment.offline.pay');
     Route::post('/payment/offline/pay/store', [PaymentController::class, 'storeOfflinePayment'])->name('payment.offline.store');
     Route::get('/payment/offline/details/{id}', [PaymentController::class, 'studentPaymentDetails'])->name('payment.offline.details');
+    Route::get('/payment/offline/details/invoice/{id}', [PaymentController::class, 'downloadInvoice'])->name('payment.offline.details.invoice');
     Route::get('/payment/latest', [PaymentController::class, 'latestPayments'])->name('payment.latest');
 });
 

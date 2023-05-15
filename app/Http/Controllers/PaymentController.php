@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Student;
 use App\Models\Payment;
 use Illuminate\Support\Facades\DB;
+use PDF;
 
 class PaymentController extends Controller
 {
@@ -56,7 +57,7 @@ class PaymentController extends Controller
         //     $query->where('student_id', '=', $id);
         // })->get();
         // $payments = DB::select('select * from payments where student_id = ?', [$id]);
-        $payments = Payment::where('student_id', '=', $id)->get();
+        $payments = Payment::where('student_id', '=', $id)->get()->sortDesc();
         return view('payment.offline.detail', ['title', 'Detail Pembayaran Murid'], compact(['student', 'payments']));
     }
 
@@ -64,5 +65,10 @@ class PaymentController extends Controller
     {
         $payments = Payment::all()->sortDesc();
         return view('payment.index', ['title' => 'Pembayaran Terbaru'], compact(['payments']));
+    }
+
+    public function downloadInvoice($id)
+    {
+        //
     }
 }
